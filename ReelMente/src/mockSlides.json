@@ -1,0 +1,79 @@
+{
+    "slides": [
+      {
+        "id": "1",
+        "type": "hook",
+        "content": "JavaScript es un robusto lenguaje de programación que se puede aplicar a un documento HTML y usarse para crear interactividad dinámica en los sitios web."
+      },
+      {
+        "id": "2",
+        "type": "fact",
+        "content": "Fue inventado por Brendan Eich, cofundador del proyecto Mozilla, Mozilla Foundation y la Corporación Mozilla."
+      },
+      {
+        "id": "3",
+        "type": "concept",
+        "content": "Puedes hacer casi cualquier cosa con JavaScript, desde carruseles hasta aplicaciones integradas basadas en bases de datos."
+      },
+      {
+        "id": "4",
+        "type": "summary",
+        "content": "JavaScript es compacto y flexible, permitiendo la creación de juegos, animaciones y gráficos."
+      },
+      {
+        "id": "5",
+        "type": "question",
+        "content": "¿Qué son las Interfaces de Programación de Aplicaciones del Navegador (APIs)?"
+      },
+      {
+        "id": "6",
+        "type": "answer",
+        "content": "Son APIs construidas dentro de los navegadores que ofrecen funcionalidades como crear dinámicamente contenido HTML."
+      },
+      {
+        "id": "7",
+        "type": "comparison",
+        "content": "APIs de terceros permiten incorporar funcionalidades de otros proveedores como Twitter o Facebook."
+      },
+      {
+        "id": "8",
+        "type": "quiz",
+        "content": "¿Qué puedes aplicar a tu HTML para construir y publicar sitios rápidamente?"
+      },
+      {
+        "id": "9",
+        "type": "answer",
+        "content": "Marcos de trabajo y librerías de terceros."
+      },
+      {
+        "id": "10",
+        "type": "fact",
+        "content": "Este artículo es una introducción ligera a JavaScript."
+      },
+      {
+        "id": "11",
+        "type": "concept",
+        "content": "El núcleo del lenguaje JavaScript y las herramientas se pueden aprender en detalle más tarde."
+      },
+      {
+        "id": "12",
+        "type": "hook",
+        "content": "Jugarás con algunas características de la API del navegador."
+      },
+      {
+        "id": "13",
+        "type": "summary",
+        "content": "JavaScript ofrece una gran cantidad de funcionalidad adicional con un mínimo esfuerzo."
+      },
+      {
+        "id": "14",
+        "type": "fact",
+        "content": "Los desarrolladores han escrito gran cantidad de herramientas encima del núcleo del lenguaje."
+      },
+      {
+        "id": "15",
+        "type": "question",
+        "content": "¿Qué debes esperar al aprender JavaScript?"
+      }
+    ]
+  }
