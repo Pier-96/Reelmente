@@ -8,14 +8,14 @@ export default function GeneratorView() {
   const navigate = useNavigate();
   const { saveSlides } = useSlides();
 
-  const API_URL = (import.meta.env.VITE_API_URL || '/api').replace(/\/$/, '');
+  const API_BASE = (import.meta.env.VITE_API_URL || '/api').replace(/\/$/, '');
 
   const generateSlides = async () => {
     if (!text.trim()) return;
     
     setIsLoading(true);
     try {
-      const response = await fetch(`${API_URL}/generate-slides`, {
+      const response = await fetch(`${API_BASE}/api/generate-slides`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ text })
