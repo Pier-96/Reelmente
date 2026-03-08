@@ -8,7 +8,7 @@ export default function GeneratorView() {
   const navigate = useNavigate();
   const { saveSlides } = useSlides();
 
-  const API_URL = import.meta.env.VITE_API_URL || '/api';
+  const API_URL = (import.meta.env.VITE_API_URL || '/api').replace(/\/$/, '');
 
   const generateSlides = async () => {
     if (!text.trim()) return;
