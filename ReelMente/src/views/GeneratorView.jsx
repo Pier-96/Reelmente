@@ -1,13 +1,39 @@
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
+import { useSlides } from "../hooks/useSlides";
 
 export default function GeneratorView() {
   const [text, setText] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
+  const { saveSlides } = useSlides();
 
-  const generateSlides = () => {
+  const API_URL = import.meta.env.VITE_API_URL || '/api';
+
+  const generateSlides = async () => {
     if (!text.trim()) return;
-    navigate(`/slides?content=${encodeURIComponent(text)}`);
+    
+    setIsLoading(true);
+    try {
+      const response = await fetch(`${API_URL}/generate-slides`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ text })
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to generate slides');
+      }
+
+      const data = await response.json();
+      saveSlides(data);
+      navigate('/slides');
+    } catch (error) {
+      console.error('Error:', error);
+      alert('Error al generar slides. Intenta de nuevo.');
+    } finally {
+      setIsLoading(false);
+    }
   };
  
 
@@ -38,16 +64,10 @@ export default function GeneratorView() {
           <button
             className="w-full mt-6 bg-gradient-to-r from-cyan-500 to-purple-600 text-white font-semibold py-4 px-6 rounded-xl shadow-lg shadow-purple-500/25 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300 hover:opacity-90"
             onClick={generateSlides}
-            disabled={!text}
+            disabled={!text || isLoading}
           >
-            Generar Slides
+            {isLoading ? 'Generando...' : 'Generar Slides'}
           </button>
-          <Link
-            className="w-full mt-6 py-4 px-6 bg-gradient-to-r from-cyan-600 to-purple-600 text-white font-semibold rounded-xl shadow-lg shadow-purple-500/25 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300 hover:opacity-90"
-            to="/slides?content="
-          >
-            Prueba
-          </Link>
         </div>
       </main>
     </div>

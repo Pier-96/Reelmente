@@ -1,8 +1,9 @@
-import { useNavigate, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import SlideRenderer from "../utils/slideMapper";
 import mockSlides from "../mockSlides.json";
+import { useSlides } from "../hooks/useSlides";
 
-function BottomNav({ activeTab = "slides" }) {
+function BottomNav() {
   return (
     <div className="fixed bottom-0 left-0 right-0 bg-[#1c1c1e]/95 backdrop-blur-lg border-t border-white/10 safe-area-pb">
       <div className="flex items-center justify-around max-w-md mx-auto py-2">
@@ -52,8 +53,33 @@ function BottomNav({ activeTab = "slides" }) {
 }
 
 export default function SlidesView() {
-  const navigate = useNavigate();
-  const slides = mockSlides.slides;
+  const { slidesData } = useSlides();
+  const slides = slidesData?.slides || mockSlides.slides;
+  const hasSlides = slidesData?.slides && slidesData.slides.length > 0;
+
+  if (!hasSlides) {
+    return (
+      <div className="min-h-screen flex flex-col bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
+        <header className="p-4 bg-white/5 backdrop-blur-lg border-b border-white/10">
+          <div className="max-w-4xl mx-auto flex items-center justify-between">
+            <h1 className="text-xl font-bold bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
+              ReelMente
+            </h1>
+            <div className="w-16" />
+          </div>
+        </header>
+        <main className="flex-1 flex items-center justify-center">
+          <div className="text-center p-8">
+            <p className="text-white/60 mb-4">No hay slides generados</p>
+            <Link to="/" className="text-purple-400 hover:text-purple-300">
+              Generar slides
+            </Link>
+          </div>
+        </main>
+        <BottomNav />
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen flex flex-col bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">

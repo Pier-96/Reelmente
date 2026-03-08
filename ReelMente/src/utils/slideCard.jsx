@@ -1,5 +1,4 @@
 import { motion } from "framer-motion";
-
 export default function SlideCard({ slide }) {
   const typeStyles = {
     hook: "from-rose-500 via-red-500 to-orange-500",
